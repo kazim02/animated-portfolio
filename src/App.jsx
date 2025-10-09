@@ -9,16 +9,17 @@ const App = () => {
   return (
     <>
       <section id="Homepage">
-        {/* <Sidebar /> */}
+        
         <Navbar />
         <Hero />
       </section>
-      <section>
+      <section id="skills">
         <Services />
       </section>
-      <Portfolio/>
-      <section>
-        <Contact/>
+
+      <Portfolio />
+      <section id="contact">
+        <Contact />
       </section>
     </>
   );

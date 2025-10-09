@@ -36,7 +36,7 @@ const Hero = () => {
         duration: 15,
         repeat: Infinity,
         ease: "linear",
-        repeatTypr:"mirror"
+        repeatType: "mirror",
       },
     },
   };

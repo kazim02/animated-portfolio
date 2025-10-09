@@ -1,33 +1,40 @@
 .hero {
   height: calc(100vh - 100px);
-  background: linear-gradient(180deg, #0c0c1d , #111132);
+  // background: linear-gradient(180deg, #0c0c1d, #111132);
   overflow: hidden;
   position: relative;
+
   .wrapper {
     max-width: 1366px;
     height: 100%;
     margin: auto;
     width: 50%;
+
     .textContainer {
       height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: center;
       gap: 40px;
+
       h2 {
         font-size: 30px;
         color: rebeccapurple;
         letter-spacing: 10px;
       }
+
       h1 {
         font-size: 88px;
       }
+
       img {
         width: 50px;
       }
+
       .button {
         display: flex;
         gap: 10px;
+
         button {
           padding: 20px;
           border: 1px solid white;
@@ -45,7 +52,14 @@
     top: 0%;
     right: 0%;
     width: 40%;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
   }
+
   .sliddingTextContainer {
     position: absolute;
     font-size: 50vh;
@@ -55,5 +69,116 @@
     width: 50%;
     font-weight: bold;
     background: transparent;
+  }
+
+  /* ✅ Responsive styling (only size adjustments, no layout changes) */
+
+  @media (max-width: 1200px) {
+    .wrapper {
+      width: 60%;
+      .textContainer {
+        h1 {
+          font-size: 70px;
+        }
+      }
+    }
+    .imageContainer {
+      width: 35%;
+    }
+    .sliddingTextContainer {
+      font-size: 40vh;
+    }
+  }
+
+  @media (max-width: 992px) {
+    .wrapper {
+      width: 70%;
+      .textContainer {
+        h1 {
+          font-size: 60px;
+        }
+        h2 {
+          font-size: 24px;
+        }
+      }
+    }
+    .imageContainer {
+      width: 40%;
+    }
+    .sliddingTextContainer {
+      font-size: 30vh;
+    }
+  }
+
+  @media (max-width: 768px) {
+    height: auto;
+    padding: 60px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .wrapper {
+      width: 90%;
+      text-align: center;
+      .textContainer {
+        align-items: center;
+        gap: 25px;
+        h2 {
+          font-size: 20px;
+          letter-spacing: 6px;
+        }
+        h1 {
+          font-size: 45px;
+        }
+        .button {
+          flex-direction: column;
+          gap: 15px;
+          button {
+            width: 80%;
+          }
+          img {
+            width: 35px;
+          }
+        }
+      }
+    }
+
+    .imageContainer {
+      position: static;
+      width: 70%;
+      margin-top: 30px;
+    }
+
+    .sliddingTextContainer {
+      font-size: 18vh;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .wrapper {
+      .textContainer {
+        h1 {
+          font-size: 32px;
+        }
+        h2 {
+          font-size: 16px;
+        }
+        .button {
+          button {
+            width: 100%;
+            padding: 15px;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+
+    .imageContainer {
+      width: 80%;
+    }
+
+    .sliddingTextContainer {
+      font-size: 15vh;
+    }
   }
 }

@@ -1,33 +1,45 @@
+
 .contact {
-  min-height: 100vh;
+  min-height: 90vh;
   max-width: 1336px;
   margin: auto;
+  
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 50px;
   padding: 40px;
+  flex-wrap: wrap; // allow wrapping on smaller screens
 
   .textContainer {
     flex: 1;
+    min-width: 300px; // don't shrink too much
     display: flex;
     flex-direction: column;
     gap: 40px;
 
     h1 {
-      font-size: clamp(40px, 8vw, 100px);
-      line-height: 1.1;
+      font-size: clamp(32px, 6vw, 80px);
+      line-height: 1.2;
     }
 
     span {
       font-weight: 300;
-      font-size: 18px;
+      font-size: 16px;
+    }
+
+    .item {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
     }
   }
 
   .formContainer {
     flex: 1;
+    min-width: 300px;
     position: relative;
+    margin-top: 40px;
 
     .phoneSvg {
       position: absolute;
@@ -35,19 +47,27 @@
       left: 50%;
       transform: translate(-50%, -50%);
       stroke: orange;
-      opacity: 0.1; // make it faint but visible
-      z-index: 0; // not too far back, so it’s not completely hidden
-      pointer-events: none; // prevent blocking form inputs
+      opacity: 0.1;
+      z-index: 0;
+      pointer-events: none;
+
+      svg {
+        width: 100%;
+        height: auto;
+        max-width: 400px; // scale down on mobile
+      }
     }
 
     form {
+      position: relative;
+      z-index: 1;
       display: flex;
       flex-direction: column;
       gap: 20px;
 
       input,
       textarea {
-        padding: 20px;
+        padding: 15px;
         background-color: transparent;
         border: 1px solid white;
         color: white;
@@ -56,12 +76,11 @@
       }
 
       textarea {
-        min-height: 120px;
-        resize: none;
+        min-height: 100px;
       }
 
       button {
-        padding: 20px;
+        padding: 15px;
         border: none;
         background-color: orange;
         cursor: pointer;
@@ -74,6 +93,51 @@
           background-color: darkorange;
         }
       }
+    }
+  }
+}
+
+/* Media Queries for smaller screens */
+@media (max-width: 1024px) {
+  .contact {
+    gap: 30px;
+    padding: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact {
+    flex-direction: column;
+    padding: 20px;
+
+    .textContainer, .formContainer {
+      min-width: 100%;
+      margin-top: 20px;
+    }
+
+    .formContainer .phoneSvg {
+      max-width: 250px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .contact {
+    padding: 15px;
+
+    .textContainer h1 {
+      font-size: clamp(28px, 8vw, 50px);
+    }
+
+    .formContainer form input,
+    .formContainer form textarea,
+    .formContainer form button {
+      padding: 12px;
+      font-size: 14px;
+    }
+
+    .formContainer .phoneSvg {
+      max-width: 180px;
     }
   }
 }

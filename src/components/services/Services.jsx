@@ -1,5 +1,6 @@
 import "./services.scss";
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 
 const variants = {
   initial: {
@@ -18,7 +19,36 @@ const variants = {
   },
 };
 
+const serviceData = [
+  {
+    title: "branding",
+    desc: "We help define your visual identity and brand voice to make your business stand out in the crowd.",
+  },
+  {
+    title: "design",
+    desc: "We craft user-friendly, stunning designs that align with your brand and engage your audience.",
+  },
+  {
+    title: "strategy",
+    desc: "We create growth-driven strategies that align with your goals and deliver measurable results.",
+  },
+  {
+    title: "marketing",
+    desc: "We build data-driven marketing campaigns to boost your online presence and drive conversions.",
+  },
+];
+
 const Services = () => {
+  const [selected, setSelected] = useState("branding");
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkScreen = () => setIsMobile(window.innerWidth <= 1024);
+    checkScreen();
+    window.addEventListener("resize", checkScreen);
+    return () => window.removeEventListener("resize", checkScreen);
+  }, []);
+
   return (
     <motion.div
       className="services"
@@ -26,6 +56,7 @@ const Services = () => {
       initial="initial"
       whileInView="animate"
     >
+      {/* top text */}
       <motion.div className="textContainer" variants={variants}>
         <p>
           I focus on helping your brand grow <br /> and move forward
@@ -33,6 +64,7 @@ const Services = () => {
         <hr />
       </motion.div>
 
+      {/* title */}
       <motion.div className="titleContainer" variants={variants}>
         <div className="title">
           <img src="/people.webp" alt="People" />
@@ -49,24 +81,49 @@ const Services = () => {
         </div>
       </motion.div>
 
-      <motion.div className="listContainer" variants={variants}>
-        {["branding", "design", "strategy", "marketing"].map((title, i) => (
+      {/* list for desktop */}
+      {!isMobile && (
+        <motion.div className="listContainer" variants={variants}>
+          {serviceData.map((item, i) => (
+            <motion.div
+              key={i}
+              className="box"
+              whileHover={{ backgroundColor: "lightgray", color: "black" }}
+            >
+              <h2>{item.title}</h2>
+              <p>{item.desc}</p>
+              <button>GO</button>
+            </motion.div>
+          ))}
+        </motion.div>
+      )}
+
+      {/* button + single box for mobile */}
+      {isMobile && (
+        <motion.div className="mobileContainer" variants={variants}>
+          <div className="buttonRow">
+            {serviceData.map((item) => (
+              <button
+                key={item.title}
+                className={selected === item.title ? "active" : ""}
+                onClick={() => setSelected(item.title)}
+              >
+                {item.title}
+              </button>
+            ))}
+          </div>
+
           <motion.div
-            key={i}
+            key={selected}
             className="box"
             whileHover={{ backgroundColor: "lightgray", color: "black" }}
           >
-            <h2>{title}</h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat
-              quaerat perspiciatis nulla non in esse sint officiis explicabo,
-              ipsam ad omnis iure vitae soluta a voluptatibus. Ex obcaecati
-              veritatis beatae?
-            </p>
+            <h2>{selected}</h2>
+            <p>{serviceData.find((s) => s.title === selected)?.desc}</p>
             <button>GO</button>
           </motion.div>
-        ))}
-      </motion.div>
+        </motion.div>
+      )}
     </motion.div>
   );
 };
