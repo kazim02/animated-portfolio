@@ -36,7 +36,7 @@ const Hero = () => {
         duration: 15,
         repeat: Infinity,
         ease: "linear",
-        repeatType: "mirror",
+        repeatTypr:"mirror"
       },
     },
   };
@@ -77,7 +77,7 @@ const Hero = () => {
       </motion.div>
 
       <div className="imageContainer">
-        <img src="/hero.png" alt="Hero" loading="lazy" />
+        <img src="/img-hero.png" alt="Hero" loading="lazy" />
       </div>
     </div>
   );

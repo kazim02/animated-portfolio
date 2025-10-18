@@ -62,12 +62,6 @@ const Portfolio = () => {
       img: "https://images.pexels.com/photos/177598/pexels-photo-177598.jpeg",
       desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit...",
     },
-    {
-      id: 4,
-      title: "back end app",
-      img: "https://images.pexels.com/photos/811587/pexels-photo-811587.jpeg",
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit...",
-    },
   ];
 
   return (
