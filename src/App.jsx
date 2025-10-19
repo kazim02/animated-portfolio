@@ -9,15 +9,13 @@ const App = () => {
   return (
     <>
       <section id="Homepage">
-        
         <Navbar />
         <Hero />
       </section>
       <section id="skills">
         <Services />
       </section>
-
-      <Portfolio />
+        <Portfolio />
       <section id="contact">
         <Contact />
       </section>

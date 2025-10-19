@@ -21,29 +21,33 @@ const Hero = () => {
     animate: {
       opacity: [0, 1, 0],
       y: [0, 10, 0],
-      transition: {
-        duration: 2,
-        repeat: Infinity,
-      },
+      transition: { duration: 2, repeat: Infinity },
     },
   };
 
-  const sliderVarients = {
+  const sliderVariants = {
     initial: { x: "100%" },
     animate: {
       x: "-100%",
       transition: {
-        duration: 15,
+        duration: 25, // slower, subtle movement
         repeat: Infinity,
         ease: "linear",
-        repeatTypr:"mirror"
+        repeatType: "loop",
       },
     },
   };
+  const handleScroll = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
-    <div className="hero">
+    <section className="hero">
       <div className="wrapper">
+        {/* Hero Text */}
         <motion.div
           className="textContainer"
           variants={container}
@@ -51,10 +55,22 @@ const Hero = () => {
           animate="animate"
         >
           <motion.h2 variants={item}>KAZIM SAIYED</motion.h2>
-          <motion.h1 variants={item}>web developer and designer</motion.h1>
-          <motion.div className="button">
-            <motion.button variants={item}>see the latest work</motion.button>
-            <motion.button variants={item}>Contact Me</motion.button>
+          <motion.h1 variants={item}>Web Developer & Designer</motion.h1>
+
+          <motion.div className="buttonGroup">
+            <motion.button
+              variants={item}
+              onClick={() => handleScroll("projects")}
+            >
+              See My Work
+            </motion.button>
+            <motion.button
+              variants={item}
+              onClick={() => handleScroll("contact")}
+            >
+              Contact Me
+            </motion.button>
+
             <motion.img
               variants={scrollButton}
               initial="initial"
@@ -65,21 +81,23 @@ const Hero = () => {
             />
           </motion.div>
         </motion.div>
+
+        {/* Hero Image */}
+        <div className="imageContainer">
+          <img src="/img-hero.png" alt="Hero" loading="lazy" />
+        </div>
       </div>
 
+      {/* Sliding Background Text */}
       <motion.div
-        className="sliddingTextContainer"
-        variants={sliderVarients}
+        className="slidingText"
+        variants={sliderVariants}
         initial="initial"
         animate="animate"
       >
-        kazim
+        DEVELOP DESIGN DEPLOY
       </motion.div>
-
-      <div className="imageContainer">
-        <img src="/img-hero.png" alt="Hero" loading="lazy" />
-      </div>
-    </div>
+    </section>
   );
 };
 

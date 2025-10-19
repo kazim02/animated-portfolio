@@ -1,184 +1,157 @@
 .hero {
-  height: calc(100vh - 100px);
-  // background: linear-gradient(180deg, #0c0c1d, #111132);
-  overflow: hidden;
+  height: 100vh;
   position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, #0c0c1d, #111132);
 
   .wrapper {
-    max-width: 1366px;
+    margin: 0 auto;
     height: 100%;
-    margin: auto;
-    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 70px;
 
     .textContainer {
-      height: 100%;
+      flex: 1;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      gap: 40px;
+      gap: 30px;
+      position: relative;
+      z-index: 1;
+      background: transparent;
 
       h2 {
-        font-size: 30px;
+        font-size: 2rem;
         color: rebeccapurple;
-        letter-spacing: 10px;
+        letter-spacing: 0.7rem;
+        text-transform: uppercase;
       }
 
       h1 {
-        font-size: 88px;
+        font-size: 5rem;
+        font-weight: bold;
+        line-height: 1.1;
       }
 
-      img {
-        width: 50px;
-      }
-
-      .button {
+      .buttonGroup {
         display: flex;
-        gap: 10px;
+        align-items: center;
+        gap: 15px;
+        flex-wrap: wrap;
+        background: transparent;
 
         button {
-          padding: 20px;
-          border: 1px solid white;
+          padding: 15px 25px;
+          border: 2px solid white;
           border-radius: 10px;
+          background: transparent;
+          color: white;
           cursor: pointer;
-          font-weight: 300;
+          font-weight: 500;
+          transition: all 0.3s ease;
+
+          &:hover {
+            background: white;
+            color: #111;
+          }
         }
+
+        img {
+          width: 40px;
+          margin-left: 10px;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .imageContainer {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+      background-color: transparent;
+      
+
+      img {
+        width: 100%;
+        max-width: 500px;
+        height: auto;
+        object-fit: contain;
+        background-color: transparent;
       }
     }
   }
 
-  .imageContainer {
-    height: 100%;
+  /* Sliding Background Text */
+  .slidingText {
     position: absolute;
-    top: 0%;
-    right: 0%;
-    width: 40%;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-  }
-
-  .sliddingTextContainer {
-    position: absolute;
-    font-size: 50vh;
-    bottom: -100px;
-    white-space: nowrap;
-    color: #ffffff09;
-    width: 50%;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    font-size: 18rem;
     font-weight: bold;
-    background: transparent;
+    color: rgba(255, 255, 255, 0.05);
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 0;
   }
 
-  /* ✅ Responsive styling (only size adjustments, no layout changes) */
-
+  /* Responsive */
   @media (max-width: 1200px) {
     .wrapper {
-      width: 60%;
       .textContainer {
-        h1 {
-          font-size: 70px;
-        }
+        h1 { font-size: 4rem; }
+        h2 { font-size: 1.8rem; }
       }
+      .imageContainer img { max-width: 400px; }
     }
-    .imageContainer {
-      width: 35%;
-    }
-    .sliddingTextContainer {
-      font-size: 40vh;
-    }
+    .slidingText { font-size: 14rem; }
   }
 
   @media (max-width: 992px) {
     .wrapper {
-      width: 70%;
-      .textContainer {
-        h1 {
-          font-size: 60px;
-        }
-        h2 {
-          font-size: 24px;
-        }
-      }
-    }
-    .imageContainer {
-      width: 40%;
-    }
-    .sliddingTextContainer {
-      font-size: 30vh;
-    }
-  }
-
-  @media (max-width: 768px) {
-    height: auto;
-    padding: 60px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    .wrapper {
-      width: 90%;
+      flex-direction: column-reverse;
       text-align: center;
+      justify-content: center;
+      gap: 30px;
+
       .textContainer {
-        align-items: center;
-        gap: 25px;
-        h2 {
-          font-size: 20px;
-          letter-spacing: 6px;
-        }
-        h1 {
-          font-size: 45px;
-        }
-        .button {
+        h1 { font-size: 3rem; background-color: transparent; }
+        h2 { font-size: 1.5rem; background-color: transparent;}
+
+        .buttonGroup {
           flex-direction: column;
-          gap: 15px;
-          button {
-            width: 80%;
-          }
-          img {
-            width: 35px;
-          }
+          button { width: 80%; }
+          img { width: 30px; }
         }
       }
-    }
 
-    .imageContainer {
-      position: static;
-      width: 70%;
-      margin-top: 30px;
+      .imageContainer { width: 70%; }
     }
-
-    .sliddingTextContainer {
-      font-size: 18vh;
-    }
+    .slidingText { font-size: 10rem; }
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 576px) {
     .wrapper {
+      flex-direction: column-reverse;
+      padding: 50px 20px;
+
       .textContainer {
-        h1 {
-          font-size: 32px;
-        }
-        h2 {
-          font-size: 16px;
-        }
-        .button {
-          button {
-            width: 100%;
-            padding: 15px;
-            font-size: 14px;
-          }
+        h1 { font-size: 2.2rem;  background-color: transparent; }
+        h2 { font-size: 1.2rem; letter-spacing: 0.4rem; background-color: transparent; }
+
+        .buttonGroup {
+          button { width: 100%; padding: 12px; font-size: 14px; }
+          img { width: 25px; }
         }
       }
-    }
 
-    .imageContainer {
-      width: 80%;
+      .imageContainer { width: 90%; }
     }
-
-    .sliddingTextContainer {
-      font-size: 15vh;
-    }
+    .slidingText { font-size: 6rem; }
   }
 }

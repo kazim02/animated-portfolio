@@ -12,7 +12,7 @@ const Navbar = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const navLinks = [
-    { name: "Home", id: "home" },
+    { name: "Home", id: "Homepage" },
     { name: "About", id: "about" },
     { name: "Projects", id: "projects" },
     { name: "Skills", id: "skills" },
@@ -45,7 +45,9 @@ const Navbar = () => {
   return (
     <div className="navbar">
       <div className="wrapper">
-        <span className="logo">Kazim Portfolio</span>
+        <span className="logo" onClick={() => handleScroll("Homepage")}>
+          Kazim Portfolio
+        </span>
 
         {/* Hamburger */}
         <div
