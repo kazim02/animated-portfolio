@@ -13,8 +13,16 @@ html {
   color: lightgray;
 }
 section {
-  height: 100vh;
-  scroll-snap-align: center;
+  scroll-snap-align: unset;
+  height: auto; 
+  min-height: 100vh; 
+}
+
+
+@media (min-width: 1024px) {
+  section {
+    height: 100vh;
+  }
 }
 
 .course {

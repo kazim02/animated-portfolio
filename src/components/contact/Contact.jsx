@@ -2,6 +2,7 @@ import "./contact.scss";
 import { useRef } from "react";
 import { motion, useInView, useAnimation } from "framer-motion";
 
+
 const Contact = () => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { margin: "-100px", once: false });
@@ -84,6 +85,7 @@ const Contact = () => {
           </motion.form>
         </motion.div>
       </div>
+
     </>
   );
 };

@@ -54,7 +54,7 @@ const Hero = () => {
           initial="initial"
           animate="animate"
         >
-          <motion.h2 variants={item}>KAZIM SAIYED</motion.h2>
+          <motion.h2 variants={item}>Hey,i'm KAZIM SAIYED</motion.h2>
           <motion.h1 variants={item}>Web Developer & Designer</motion.h1>
 
           <motion.div className="buttonGroup">

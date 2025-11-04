@@ -9,8 +9,8 @@ const fadeInUp = {
 
 const boxHover = {
   hover: {
-    scale: 1.05,
-    backgroundColor: "lightgray",
+    scale: 1.03,
+    // backgroundColor: "lightgray",
     color: "black",
     transition: { duration: 0.3 },
   },
@@ -100,7 +100,9 @@ const Services = () => {
           viewport={{ once: true }}
         >
           {serviceData.map((item, i) => (
-            <motion.div key={i} className="box" variants={boxHover} whileHover="hover">
+            <motion.div key={i} className="box" 
+            variants={boxHover} whileHover="hover"
+            >
               <h2>{item.title}</h2>
               <p>{item.desc}</p>
               <button>GO</button>
