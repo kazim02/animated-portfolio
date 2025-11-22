@@ -22,6 +22,14 @@ const About = () => {
     }
   };
 
+  const handleScroll = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+      setMenuOpen(false);
+    }
+  };
+
   const frontendTech = [
     { name: "HTML5", img: "/icons/HTML5.svg" },
     { name: "React.js", img: "/icons/React.svg" },
@@ -84,14 +92,12 @@ const About = () => {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 >
-            About Me
-          </h2>
+          <h2>About Me</h2>
 
           <p style={{ lineHeight: 1.7, marginBottom: "1rem" }}>
             I’m{" "}
             <span style={{ color: "#00bcd4", fontWeight: 600 }}>
-              Kazim Saiyed
+              KAZIM SAIYED
             </span>
             , a dedicated{" "}
             <span style={{ color: "#00bcd4", fontWeight: 600 }}>
@@ -128,6 +134,9 @@ const About = () => {
             , I value clear communication, attention to detail, and turning
             ideas into functional, production-ready products.
           </p>
+          <motion.button onClick={() => handleScroll("contact")}>
+            Contact Me
+          </motion.button>
         </motion.div>
 
         {/* RIGHT - Skills */}

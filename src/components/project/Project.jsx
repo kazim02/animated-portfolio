@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import "./portfolio.scss";
+import "./project.scss";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 
 // Single Card
@@ -12,9 +12,9 @@ const Single = ({ item }) => {
   });
 
   return (
-    <section>
+    <section id="project">
       <div className="container">
-        <div className="wrapper" >
+        <div className="wrapper">
           <div className="imageContainer" ref={ref}>
             <img src={item.img} alt={item.title} />
           </div>

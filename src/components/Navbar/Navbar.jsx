@@ -14,9 +14,10 @@ const Navbar = () => {
   const navLinks = [
     { name: "Home", id: "Homepage" },
     { name: "About", id: "about" },
+    { name: "Services", id: "services" },
     { name: "Projects", id: "projects" },
-    { name: "Skills", id: "skills" },
     { name: "Contact", id: "contact" },
+
   ];
 
   const socialLinks = [
@@ -46,7 +47,7 @@ const Navbar = () => {
     <div className="navbar">
       <div className="wrapper">
         <span className="logo" onClick={() => handleScroll("Homepage")}>
-          Kazim Portfolio
+          KAZIM SAIYED
         </span>
 
         {/* Hamburger */}

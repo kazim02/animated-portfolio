@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="footer-container">
         {/* Left side - brand / short info */}
         <div className="footer-about">
-          <h2>Kazim Saiyed</h2>
+          <h2>KAZIM SAIYED </h2>
           <p>
             MERN Stack Developer passionate about building clean, scalable, and
             modern web applications. Let's connect and bring ideas to life!
@@ -21,7 +21,7 @@ const Footer = () => {
       </div>
 
       <div className="footer-bottom">
-        <p>© {new Date().getFullYear()} Kazim Saiyed. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} KAZIM SAIYED. All rights reserved.</p>
       </div>
     </footer>
   );

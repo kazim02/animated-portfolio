@@ -54,8 +54,13 @@ const Hero = () => {
           initial="initial"
           animate="animate"
         >
-          <motion.h2 variants={item}>Hey,i'm KAZIM SAIYED</motion.h2>
-          <motion.h1 variants={item}>Web Developer & Designer</motion.h1>
+          <motion.h2 variants={item}>
+            <span style={{ color: "white" }}> Hey,</span>i'm KAZIM SAIYED
+          </motion.h2>
+          <motion.h1 variants={item}>
+            <span style={{ color: "rebeccapurple" }}>Web</span> Developer{" "}
+            <span style={{ color: "rebeccapurple" }}>&</span> Designer
+          </motion.h1>
 
           <motion.div className="buttonGroup">
             <motion.button
@@ -83,9 +88,14 @@ const Hero = () => {
         </motion.div>
 
         {/* Hero Image */}
-        <div className="imageContainer">
+        <motion.div
+          variants={container}
+          initial="initial"
+          animate="animate"
+          className="imageContainer"
+        >
           <img src="/img-hero.png" alt="Hero" loading="lazy" />
-        </div>
+        </motion.div>
       </div>
 
       {/* Sliding Background Text */}

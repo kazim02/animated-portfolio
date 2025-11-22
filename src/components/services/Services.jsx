@@ -15,23 +15,33 @@ const boxHover = {
     transition: { duration: 0.3 },
   },
 };
+const handleScroll = (id) => {
+  const element = document.getElementById(id);
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth" });
+  }
+};
 
 const serviceData = [
   {
     title: "branding",
-    desc: "We help define your visual identity and brand voice to make your business stand out in the crowd.",
+    desc: "I help businesses build a consistent and memorable visual identity that connects with their audience.",
+    tagline: "Crafting brands that people remember.",
   },
   {
     title: "design",
-    desc: "We craft user-friendly, stunning designs that align with your brand and engage your audience.",
+    desc: "I create modern, responsive designs focused on usability and aesthetic balance.",
+    tagline: "Turning creativity into functional design.",
   },
   {
     title: "strategy",
-    desc: "We create growth-driven strategies that align with your goals and deliver measurable results.",
+    desc: "I work with clients to plan digital strategies that align with goals and deliver measurable growth.",
+    tagline: "Smart strategies that deliver real results.",
   },
   {
-    title: "marketing",
-    desc: "We build data-driven marketing campaigns to boost your online presence and drive conversions.",
+    title: "development",
+    desc: "I build full-stack web applications using the MERN stack — fast, scalable, and optimized for performance.",
+    tagline: "Transforming ideas into live web experiences.",
   },
 ];
 
@@ -73,7 +83,10 @@ const Services = () => {
         <div className="title">
           <img src="/people.webp" alt="People" />
           <h1>
-            <motion.b whileHover={{ color: "orange", scale: 1.05 }} transition={{ duration: 0.3 }}>
+            <motion.b
+              whileHover={{ color: "orange", scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+            >
               Unique
             </motion.b>{" "}
             Idea
@@ -81,12 +94,17 @@ const Services = () => {
         </div>
         <div className="title">
           <h1>
-            <motion.b whileHover={{ color: "orange", scale: 1.05 }} transition={{ duration: 0.3 }}>
+            <motion.b
+              whileHover={{ color: "orange", scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+            >
               For Your
             </motion.b>{" "}
             Business.
           </h1>
-          <button>WHAT WE DO?</button>
+          <button onClick={() => handleScroll("project")} id="/project">
+            WHAT I DO?
+          </button>
         </div>
       </motion.div>
 
@@ -100,12 +118,15 @@ const Services = () => {
           viewport={{ once: true }}
         >
           {serviceData.map((item, i) => (
-            <motion.div key={i} className="box" 
-            variants={boxHover} whileHover="hover"
+            <motion.div
+              key={i}
+              className="box"
+              variants={boxHover}
+              whileHover="hover"
             >
               <h2>{item.title}</h2>
               <p>{item.desc}</p>
-              <button>GO</button>
+              <span className="tagline">{item.tagline}</span>
             </motion.div>
           ))}
         </motion.div>
@@ -142,7 +163,7 @@ const Services = () => {
           >
             <h2>{selected}</h2>
             <p>{serviceData.find((s) => s.title === selected)?.desc}</p>
-            <button>GO</button>
+            <p>{serviceData.find((s) => s.title === selected)?.tagline}</p>
           </motion.div>
         </motion.div>
       )}

@@ -39,8 +39,21 @@
         transition: color 0.3s ease;
       }
 
-      p:hover {
-        color: #fff;
+      button {
+        padding: 15px 25px;
+        border: 2px solid white;
+        border-radius: 10px;
+        background: transparent;
+        color: white;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 700;
+        font-size: 18px;
+
+        &:hover {
+          background: white;
+          color: #111;
+        }
       }
     }
 

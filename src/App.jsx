@@ -4,7 +4,7 @@ import Contact from "./components/contact/Contact";
 import Footer from "./components/Footer/Footer";
 import Hero from "./components/hero/Hero";
 import Navbar from "./components/Navbar/Navbar";
-import Portfolio from "./components/portfolio/Portfolio";
+import Project from "./components/project/Project";
 import Services from "./components/services/Services";
 
 const App = () => {
@@ -14,19 +14,23 @@ const App = () => {
         <Navbar />
         <Hero />
       </section>
-      <section>
-        <About/>
+
+      <section id="about">
+        <About />
       </section>
-      <section id="skills">
+
+      <section id="services">
         <Services />
       </section>
-        <Portfolio />
+      
+
+        <Project />
+
       <section id="contact">
         <Contact />
       </section>
 
-        <Footer/>
-
+      <Footer />
     </>
   );
 };
