@@ -17,15 +17,17 @@ const Navbar = () => {
     { name: "Services", id: "services" },
     { name: "Projects", id: "projects" },
     { name: "Contact", id: "contact" },
-
   ];
 
   const socialLinks = [
-    { href: "https://github.com/", icon: <FaGithub /> },
-    { href: "https://linkedin.com/", icon: <FaLinkedin /> },
-    { href: "https://instagram.com/", icon: <FaInstagram /> },
-    { href: "https://facebook.com/", icon: <FaFacebook /> },
-    { href: "https://x.com/", icon: <FaXTwitter /> },
+    { href: "https://github.com/kazim02", icon: <FaGithub /> },
+    {
+      href: "https://www.linkedin.com/in/kazim-mehdi-saiyed-7263a7246/",
+      icon: <FaLinkedin />,
+    },
+    { href: "https://www.instagram.com/kazim.webdev/", icon: <FaInstagram /> },
+    { href: "https://www.facebook.com/kazim.webdev/", icon: <FaFacebook /> },
+    { href: "https://x.com/FahmKazim23377", icon: <FaXTwitter /> },
   ];
 
   const handleScroll = (id) => {

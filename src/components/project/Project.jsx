@@ -21,7 +21,7 @@ const Single = ({ item }) => {
           <motion.div className="textContainer" style={{ y }}>
             <h2>{item.title}</h2>
             <p>{item.desc}</p>
-            <button>See Demo</button>
+            <button>Case Study</button>
           </motion.div>
         </div>
       </div>
@@ -47,19 +47,19 @@ const Portfolio = () => {
     {
       id: 1,
       title: "react app",
-      img: "https://images.pexels.com/photos/1714341/pexels-photo-1714341.jpeg",
+      img: "/projectImg/issac.png",
       desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit...",
     },
     {
       id: 2,
       title: "full stack app",
-      img: "https://images.pexels.com/photos/18105/pexels-photo.jpg",
+      img: "/projectImg/turkmangala.png",
       desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit...",
     },
     {
       id: 3,
       title: "next js app",
-      img: "https://images.pexels.com/photos/177598/pexels-photo-177598.jpeg",
+      img: "/projectImg/buyamia.png",
       desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit...",
     },
   ];
@@ -70,7 +70,6 @@ const Portfolio = () => {
         <h1 style={{ marginTop: "30px" }}>Featured Works</h1>
         <motion.div style={{ scaleX }} className="progressBar"></motion.div>
       </div>
-
       {items.map((item) => (
         <Single item={item} key={item.id} />
       ))}
