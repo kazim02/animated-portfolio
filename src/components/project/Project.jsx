@@ -1,10 +1,12 @@
 import { useRef } from "react";
 import "./project.scss";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 // Single Card
 const Single = ({ item }) => {
   const ref = useRef();
+  const navigate = useNavigate();
   const { scrollYProgress } = useScroll({ target: ref });
   const y = useSpring(useTransform(scrollYProgress, [0, 1], [-200, 200]), {
     stiffness: 100,
@@ -18,10 +20,14 @@ const Single = ({ item }) => {
           <div className="imageContainer" ref={ref}>
             <img src={item.img} alt={item.title} />
           </div>
+
           <motion.div className="textContainer" style={{ y }}>
             <h2>{item.title}</h2>
             <p>{item.desc}</p>
-            <button>Case Study</button>
+
+            <button onClick={() => navigate(`/projects/${item.slug}`)}>
+              Case Study
+            </button>
           </motion.div>
         </div>
       </div>
@@ -46,21 +52,24 @@ const Portfolio = () => {
   const items = [
     {
       id: 1,
-      title: "react app",
+      slug: "issac-lord-ecommerce",
+      title: "Isaac Lord E-commerce",
       img: "/projectImg/issac.png",
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit...",
+      desc: "A dynamic UK-based e-commerce platform built with a CMS-driven catalog, optimized product browsing, and advanced filtering for industrial tools.",
     },
     {
       id: 2,
-      title: "full stack app",
+      slug: "turkmen-gala-corporate-site",
+      title: "Turkmen Gala Corporate Website",
       img: "/projectImg/turkmangala.png",
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit...",
+      desc: "Corporate website for a leading energy solutions provider featuring bilingual content, content-managed pages, and smooth animated interactions.",
     },
     {
       id: 3,
-      title: "next js app",
+      slug: "buyamia-marketplace",
+      title: "Buyamia Marketplace",
       img: "/projectImg/buyamia.png",
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit...",
+      desc: "A scalable multi-vendor marketplace enabling sellers to onboard products, customers to shop seamlessly, and admins to control operations.",
     },
   ];
 

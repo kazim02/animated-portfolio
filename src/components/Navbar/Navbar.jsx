@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import "./Navbar.scss";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLocation, useNavigate } from "react-router-dom";
 
 // React icons
 import { FaGithub, FaLinkedin, FaInstagram, FaFacebook } from "react-icons/fa";
@@ -10,6 +11,8 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [hovered, setHovered] = useState(null);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const navLinks = [
     { name: "Home", id: "Homepage" },
@@ -31,11 +34,19 @@ const Navbar = () => {
   ];
 
   const handleScroll = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      setMenuOpen(false);
+    if (location.pathname !== "/") {
+      navigate("/", { replace: false });
+
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) element.scrollIntoView({ behavior: "smooth" });
+      }, 300);
+    } else {
+      const element = document.getElementById(id);
+      if (element) element.scrollIntoView({ behavior: "smooth" });
     }
+
+    setMenuOpen(false);
   };
 
   // Update window width on resize

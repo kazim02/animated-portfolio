@@ -1,36 +1,49 @@
 import "./app.scss";
-import About from "./components/About/About";
-import Contact from "./components/contact/Contact";
-import Footer from "./components/Footer/Footer";
-import Hero from "./components/hero/Hero";
 import Navbar from "./components/Navbar/Navbar";
-import Project from "./components/project/Project";
+import Hero from "./components/hero/Hero";
+import About from "./components/About/About";
 import Services from "./components/services/Services";
+import Project from "./components/project/Project";
+import Contact from "./components/contact/Contact";
+import ProjectDetails from "./components/project/ProjectDetails.jsx";
+import { Routes, Route } from "react-router-dom";
 
 const App = () => {
   return (
     <>
-      <section id="Homepage">
-        <Navbar />
-        <Hero />
-      </section>
+      <Navbar />
+      <Routes>
+        {/* Homepage */}
+        <Route
+          path="/"
+          element={
+            <>
+              <section id="Homepage">
+                <Hero />
+              </section>
 
-      <section id="about">
-        <About />
-      </section>
+              <section id="about">
+                <About />
+              </section>
 
-      <section id="services">
-        <Services />
-      </section>
-      
+              <section id="services">
+                <Services />
+              </section>
 
-        <Project />
+              <Project />
 
-      <section id="contact">
-        <Contact />
-      </section>
+              <section id="contact">
+                <Contact />
+              </section>
+            </>
+          }
+        />
 
-      <Footer />
+        {/* Case Study Page */}
+        <Route path="/projects/:slug" element={<ProjectDetails />} />
+      </Routes>
+
+      {/* <Footer /> */}
     </>
   );
 };
