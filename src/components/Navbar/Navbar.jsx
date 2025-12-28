@@ -59,7 +59,9 @@ const Navbar = () => {
   return (
     <div className="navbar">
       <div className="wrapper">
+        
         <span className="logo" onClick={() => handleScroll("Homepage")}>
+          <img className="logo-img" src="/kazim-logo.png" alt="" />
           KAZIM SAIYED
         </span>
 

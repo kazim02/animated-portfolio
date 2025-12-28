@@ -47,7 +47,7 @@ const Hero = () => {
   return (
     <section className="hero">
       <div className="wrapper">
-        {/* Hero Text */}
+
         <motion.div
           className="textContainer"
           variants={container}
@@ -96,6 +96,7 @@ const Hero = () => {
         >
           <img src="/img-hero.png" alt="Hero" loading="lazy" />
         </motion.div>
+        
       </div>
 
       {/* Sliding Background Text */}

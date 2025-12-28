@@ -93,7 +93,7 @@ const About = () => {
           transition={{ duration: 0.6 }}
         >
           <h2>About Me</h2>
-
+<img className="logo-img" src="/kazim-logo.png" alt="" />
           <p style={{ lineHeight: 1.7, marginBottom: "1rem" }}>
             I’m{" "}
             <span style={{ color: "#00bcd4", fontWeight: 600 }}>
