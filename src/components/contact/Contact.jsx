@@ -1,25 +1,89 @@
 import "./contact.scss";
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { motion, useInView, useAnimation } from "framer-motion";
-
+import emailjs from "emailjs-com";
 
 const Contact = () => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { margin: "-100px", once: false });
   const controls = useAnimation();
 
-  if (isInView) {
-    controls.start({
-      opacity: [0, 1, 0],
-      transition: { duration: 1.5, times: [0, 0.5, 1] },
-    });
-  }
+  const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [success, setSuccess] = useState(false);
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  useEffect(() => {
+    if (isInView) {
+      controls.start({
+        opacity: [0, 1, 0],
+        transition: { duration: 1.5, times: [0, 0.5, 1] },
+      });
+    } else {
+      controls.start({ opacity: 0 });
+    }
+  }, [isInView, controls]);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+  const validate = () => {
+    const newErrors = {};
+
+    if (formData.name.trim().length < 2) {
+      newErrors.name = "Name must be at least 2 characters";
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = "Please enter a valid email address";
+    }
+
+    if (formData.message.trim().length < 10) {
+      newErrors.message = "Message must be at least 10 characters";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    if (!validate()) return;
+
+    setIsSubmitting(true);
+
+    emailjs
+      .sendForm(
+        "service_bs3lnii",
+        "template_x3f7w9o",
+        e.currentTarget,
+        "0wo7jf0qe0X4ICgj8"
+      )
+      .then(() => {
+        setSuccess(true);
+        setFormData({ name: "", email: "", message: "" });
+        setErrors({});
+      })
+      .catch((error) => {
+        console.error(error);
+      })
+      .finally(() => {
+        setIsSubmitting(false);
+      });
+  };
 
   return (
     <>
       <div className="contact" ref={sectionRef}>
         <motion.div className="textContainer">
           <h1>Let's work together</h1>
+          <h3>Tell us about your idea</h3>
           <div className="item">
             <h2>Mail</h2>
             <span>
@@ -74,18 +138,49 @@ const Contact = () => {
           </motion.div>
 
           <motion.form
+            onSubmit={sendEmail}
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : { opacity: 0 }}
             transition={{ delay: 2, duration: 1 }}
           >
-            <input type="text" required placeholder="Your Name" />
-            <input type="email" required placeholder="Enter Your Email" />
-            <textarea placeholder="Your Message" />
-            <button>Submit</button>
+            <input
+              name="name"
+              type="text"
+              placeholder="Your Name"
+              value={formData.name}
+              onChange={handleChange}
+            />
+            {errors.name && <span className="error">{errors.name}</span>}
+            <input
+              name="email"
+              type="email"
+              placeholder="Enter Your Email"
+              value={formData.email}
+              onChange={handleChange}
+            />
+            {errors.email && <span className="error">{errors.email}</span>}
+            <textarea
+              name="message"
+              placeholder="Your Message"
+              value={formData.message}
+              onChange={handleChange}
+            />
+            {errors.message && <span className="error">{errors.message}</span>}
+            <button type="submit" disabled={isSubmitting}>
+              {isSubmitting ? "Sending..." : "Submit"}
+            </button>
+            {success && (
+              <motion.p
+                className="success"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+              >
+                ✅ Message sent successfully. I’ll get back to you soon!
+              </motion.p>
+            )}
           </motion.form>
         </motion.div>
       </div>
-
     </>
   );
 };
